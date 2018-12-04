@@ -7,7 +7,7 @@ categories: job
 
 # Chromopainterv2
 
-GLOBETROTTER 수행을 위한 작업
+GLOBETROTTER 수행을 위한 전처리
 
 {% highlight bash %}
 ./pipeline/chromopainter.sh mydata/ KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS 192
