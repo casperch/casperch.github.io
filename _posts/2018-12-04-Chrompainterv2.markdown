@@ -7,111 +7,47 @@ categories: job
 
 # Chromopainterv2
 
-GLOBETROTTER 수행을 위한 전처리 작업
+전달 받은 메일 내용  
+If you want to use AFR, EAa, EAb, etc as surrogates to represent the admixing sources, you also have to paint them using the same set of donors. I.e. run CHROMOPAINTER using AFR as both D and R  (same for EAa, EAb, etc) and keeping KOR as only R. You can do these in separate runs, but make sure the file you give to GLOBETROTTER combines all of these paintings.
+
+>1차 시도   
+
+poplist 를 중복해서 D,R을 같이 넣고 Target 만 R로 만들어 넣었음
+
+{% highlight bash %}
+ChromoPainterv2 \
+   -g KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.phasefile \
+   -r KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.recomb \
+   -t KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.mod.ids \
+   -f KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.Poplist.txt 0 0
+{% endhighlight %}
+
+![chunklength](/images/2018-12-04/chunklength.PNG)
+
+GLOBETROTTER 에서 아래와 같이 메시지찍고 종료됨  
+[1] "A SINGLE SURROGATE POP FITS MIXTURE AFTER 0 ITERATIONS OF SOURCE/DATE ESTIMATION! Exiting early...."
+
+![GLOBETROTTER](/images/2018-12-04/GLOBETROTTER.PNG)(/images/2018-12-04/GLOBETROTTER.PNG)
+
+
+>2차 시도  
+
+GLOBETROTTER 수행을 위한 전처리 작업 EM값을 계산함
 
 {% highlight bash %}
 ./pipeline/chromopainter.sh mydata/ KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS 192
 {% endhighlight %}
 
 수행중 샘플수의 1/10 을 랜덤하게 돌리는 -a 옵션이 0이 나올경우 전체를 계산하므로 재수행 하는게 빠름(스크립트를 수정해야할꺼 같은데..)
+1/10 샘플에서 구한 EM값을 파라미터로 넣음
 
+{% highlight bash %}
+ChromoPainterv2 -s 10 -n 903.346454482879 -M 0.0021777487 \
+  -g mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.haplotypes \
+  -r mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.recomrates \
+  -t mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.idfile \
+  -f mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.poplist 0 0 \
+  -o mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS \
+   > mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.log
+{% endhighlight %}
 
-# Egret-Genome
-REF eagle:/BiO/Research/Project1/NSM-Egret-Genome-2014-08/Resources/Reference/GigaDB/EgrGar.GigaDB.r20140505/Egretta_garzetta.indexed.by.BWA-0.6.2/Egretta_garzetta
-.fa
-
-sickle version 1.210
-
-bwa /BiO/Share/Tool/bwa-0.7.17/bwa
-
-samtools /BiO/Share/Tool/samtools-1.8/samtools
-
-picard /BiO/Share/Tool/picard-tools-2.9.0/picard.jar
-
-gatk /BiO/Share/Tool/GATK-3.5/GenomeAnalysisTK.jar
-
-* sickle
-  {% highlight bash %}
-  sickle pe -t sanger -f R1.fq -r R2.fq -o R1_trimed.fq -p R2_trimed.fq -s single.fq -q 30 -l 50 -n
-  {% endhighlight %}
-* fq stat
-
-* bwa
-  {% highlight bash %}
-  bwa mem -t 62 ${REF} ${R1} ${R2} > ${OUTDIR}/${NAME}.sam
-  {% endhighlight %}
-
-* sam2bam
-  {% highlight bash %}
-  ${SAMTOOLS} view -Sb ${NAME} > ${NAME%.*}.bam
-  {% endhighlight %}
-
-* sort  
-  {% highlight bash %}
-  ${SAMTOOLS} sort -o ${PREFIX}.sorted.bam -@ 12 ${PREFIX}.bam
-  {% endhighlight %}
-
-* rmdup  
-  {% highlight bash %}
-  ${SAMTOOLS} rmdup ${PREFIX}.sorted.bam ${PREFIX}.sorted.rmdup.bam
-  {% endhighlight %}
-  
-* addOrReplaceReadGroups
-  {% highlight bash %}
-  java -jar ${PICARD} AddOrReplaceReadGroups \
-                I=${PREFIX}.sorted.rmdup.bam \
-                O=${PREFIX}.sorted.rmdup.addReadGroup.bam \
-                RGLB=${PREFIX} \
-                RGPL=illumina \
-                RGPU=${PREFIX} \
-                RGSM=${PREFIX}
-  {% endhighlight %}
-
-* realignerTargetCreator
-  {% highlight bash %}
-  java -jar ${GATK} \
-        -T RealignerTargetCreator \
-        -R ${REF} \
-        -I ${PREFIX}.sorted.rmdup.addReadGroup.bam \
-        -o ${PREFIX}.intervals
-  {% endhighlight %}
-
-* indelRealigner
-  {% highlight bash %}
-  java -jar ${GATK} -T IndelRealigner \
-                -R ${REF} \
-                -I ${PREFIX}.sorted.rmdup.addReadGroup.bam \
-                -targetIntervals ${PREFIX}.intervals \
-                -o ${PREFIX}.sorted.rmdup.addReadGroup.realigned.bam
-  {% endhighlight %}
-
-* samtoolsViewQ30
-
-  {% highlight bash %}  
-  ${SAMTOOLS} view -b -q 30 -o ${PREFIX}.sorted.rmdup.addReadGroup.realigned.q30.bam ${PREFIX}.sorted.rmdup.addReadGroup.realigned.bam
-  {% endhighlight %}
-
-* unifiedGenotyper
-
-  {% highlight bash %}
-  java -jar ${GATK} -T UnifiedGenotyper \
-                -R ${REF} \
-                -I ${PREFIX}.sorted.rmdup.addReadGroup.realigned.q30.bam \
-                -o ${PREFIX}.sorted.rmdup.addReadGroup.realigned.q30.unifiedGenotyper.vcf \
-                -nt 12 \
-                --min_base_quality_score 30
-  {% endhighlight %}
-
-
-<!-- def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT. -->
-
-
-<!-- Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, yo#u can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/ -->
