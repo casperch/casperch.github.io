@@ -7,10 +7,11 @@ categories: job
 
 # Chromopainterv2
 
-전달 받은 메일 내용  
+전달 받은 메일 내용
+
 If you want to use AFR, EAa, EAb, etc as surrogates to represent the admixing sources, you also have to paint them using the same set of donors. I.e. run CHROMOPAINTER using AFR as both D and R  (same for EAa, EAb, etc) and keeping KOR as only R. You can do these in separate runs, but make sure the file you give to GLOBETROTTER combines all of these paintings.
 
->1차 시도   
+>1차 시도
 
 poplist 를 중복해서 D,R을 같이 넣고 Target 만 R로 만들어 넣었음
 
@@ -24,13 +25,13 @@ ChromoPainterv2 \
 
 ![chunklength](/images/2018-12-04/chunklength.PNG)
 
-GLOBETROTTER 에서 아래와 같이 메시지찍고 종료됨  
+GLOBETROTTER 에서 아래와 같이 메시지찍고 종료됨
 [1] "A SINGLE SURROGATE POP FITS MIXTURE AFTER 0 ITERATIONS OF SOURCE/DATE ESTIMATION! Exiting early...."
 
 ![GLOBETROTTER](/images/2018-12-04/GLOBETROTTER.PNG)(/images/2018-12-04/GLOBETROTTER.PNG)
 
 
->2차 시도  
+>2차 시도
 
 GLOBETROTTER 수행을 위한 전처리 작업 EM값을 계산함
 
@@ -51,3 +52,6 @@ ChromoPainterv2 -s 10 -n 903.346454482879 -M 0.0021777487 \
    > mydata/KPGP_Unrelated89_PAPGI_Tibet_OnlyWGS.log
 {% endhighlight %}
 
+_18-12-05일 추가_
+
+ _2차시도 역시 1차와 동일 오류_
