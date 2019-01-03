@@ -1,0 +1,17 @@
+---
+layout: post
+# title:  "2018-12-04"
+date:   2018-12-28 10:12:17 +0900
+categories: job
+---
+
+#F3 Test 수행
+
+convertf 과정에서 샘플 아이디가 길면 아래와 같이 에러가 난다. 39자까지인가?
+
+`
+KPGP-00205-B01-G:KPGP-00205-B01-G ignored
+fatalx:
+idnames too long: KPGP-00216-B01-G-PE500 KPGP-00216-B01-G-PE500 ll: 45 limit: 39
+Aborted (core dumped)
+`

@@ -1,0 +1,42 @@
+---
+layout: post
+# title:  "2018-12-04"
+date:   2018-12-28 10:12:17 +0900
+categories: job
+---
+
+# MediaWiki php compile options
+{% highlight sh %}
+./configure \
+--prefix=/usr/local/php7.0.33 \ 
+--enable-bcmath \
+--with-bz2 \
+--with-curl \
+--enable-filter \
+--enable-fpm \
+--with-gd \
+--enable-gd-native-ttf \
+--with-freetype-dir \
+--with-jpeg-dir \
+--with-png-dir \
+--enable-intl \
+--enable-mbstring \
+--with-mcrypt \
+--enable-mysqlnd \
+--with-mysql-sock=/var/run/mysqld/mysqld.sock \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-pdo-sqlite \
+--disable-phpdbg \
+--disable-phpdbg-webhelper \
+--enable-opcache \
+--with-openssl \
+--enable-simplexml \
+--with-sqlite3 \
+--enable-xmlreader \
+--enable-xmlwriter \
+--enable-zip \
+--with-zlib
+#--with-config-file-path=/usr/local/php7.0.33/etc \
+#--with-config-file-scan-dir=/usr/local/php7.0.33/etc/conf.d \
+{% endhighlight %}
