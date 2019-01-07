@@ -4,4 +4,4 @@ stages:
 build:
   stage: build
   script:
-    - bundle exec jekyll build -d /var/www/jlog
+    - /home/casperch/gems/bin/bundle exec jekyll build -d /var/www/jlog
