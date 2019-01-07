@@ -4,4 +4,5 @@ stages:
 build:
   stage: build
   script:
+    - export GEM_HOME=/home/casperch/gems
     - /home/casperch/gems/bin/bundle exec jekyll build -d /var/www/jlog
