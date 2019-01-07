@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 # title:  "2018-12-04"
 date:   2018-12-04 10:12:17 +0900
 categories: job
@@ -39,16 +39,16 @@ gatk /BiO/Share/Tool/GATK-3.5/GenomeAnalysisTK.jar
   ${SAMTOOLS} view -Sb ${NAME} > ${NAME%.*}.bam
   {% endhighlight %}
 
-* sort  
+* sort
   {% highlight bash %}
   ${SAMTOOLS} sort -o ${PREFIX}.sorted.bam -@ 12 ${PREFIX}.bam
   {% endhighlight %}
 
-* rmdup  
+* rmdup
   {% highlight bash %}
   ${SAMTOOLS} rmdup ${PREFIX}.sorted.bam ${PREFIX}.sorted.rmdup.bam
   {% endhighlight %}
-  
+
 * addOrReplaceReadGroups
   {% highlight bash %}
   java -jar ${PICARD} AddOrReplaceReadGroups \
@@ -80,7 +80,7 @@ gatk /BiO/Share/Tool/GATK-3.5/GenomeAnalysisTK.jar
 
 * samtoolsViewQ30
 
-  {% highlight bash %}  
+  {% highlight bash %}
   ${SAMTOOLS} view -b -q 30 -o ${PREFIX}.sorted.rmdup.addReadGroup.realigned.q30.bam \
    ${PREFIX}.sorted.rmdup.addReadGroup.realigned.bam
   {% endhighlight %}

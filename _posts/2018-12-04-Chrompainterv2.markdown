@@ -1,7 +1,17 @@
 ---
-layout: post
-# title:  "2018-12-04"
-date:   2018-12-04 10:12:17 +0900
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
 categories: job
 ---
 

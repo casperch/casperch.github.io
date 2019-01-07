@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "SMS 본인인증 작업"
 date:   2018-12-06 19:12:17 +0900
 categories: job

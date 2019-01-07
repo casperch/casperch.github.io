@@ -1,0 +1,47 @@
+---
+layout: single
+classes: wide
+# title:
+date:   2019-01-04 10:12:17 +0900
+categories: Test
+---
+
+# 고대인 끼리 F3 TEST
+
+P1 P2 Target
+P1: 고대인
+P2: 고대인
+Target: Yoruba
+
+
+{% highlight python %}
+
+import os
+
+# pop1 = list(map(lambda x: x.strip(), open("morden_list.txt").readlines()))
+pop1 = list(map(lambda x: x.strip(), open("ancient_list.txt").readlines()))
+pop2 = list(map(lambda x: x.strip(), open("ancient_list.txt").readlines()))
+popTarget = 'Yoruba'
+
+
+rule all:
+    input:
+        expand(os.path.join('OUTPUT', '{p1}.{p2}.Yoruba.log'), p1=pop1, p2=pop2)
+
+rule qp3Test:
+    output:
+        os.path.join('OUTPUT', '{p1}.{p2}.Yoruba.log')
+    shell:
+        """
+        echo 'DIR:   Convert
+indivname:    DIR/KPGP_Unrelated89_PAPGI_Tibet_HO_Ancient_Devils_SEA_Tianyuan.pruned.ind
+snpname:      DIR/KPGP_Unrelated89_PAPGI_Tibet_HO_Ancient_Devils_SEA_Tianyuan.pruned.snp
+genotypename: DIR/KPGP_Unrelated89_PAPGI_Tibet_HO_Ancient_Devils_SEA_Tianyuan.pruned.eigenstratgeno
+popfilename:  {wildcards.p1}.{wildcards.p2}.Yoruba.list' > {wildcards.p1}.{wildcards.p2}.Yoruba.par
+        echo '{wildcards.p1} {wildcards.p2} Yoruba' > {wildcards.p1}.{wildcards.p2}.Yoruba.list
+        /BiO/Share/Tool/AdmixTools/bin/qp3Pop -p {wildcards.p1}.{wildcards.p2}.Yoruba.par > {output}
+                rm {wildcards.p1}.{wildcards.p2}.Yoruba.list {wildcards.p1}.{wildcards.p2}.Yoruba.par
+        """
+
+
+{% endhighlight %}

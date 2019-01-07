@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 # title:  "2018-12-04"
 date:   2018-12-28 10:12:17 +0900
 categories: job
@@ -8,7 +8,7 @@ categories: job
 # MediaWiki php compile options
 {% highlight sh %}
 ./configure \
---prefix=/usr/local/php7.0.33 \ 
+--prefix=/usr/local/php7.0.33 \
 --enable-bcmath \
 --with-bz2 \
 --with-curl \
