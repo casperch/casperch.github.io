@@ -4,4 +4,4 @@ stages:
 build:
   stage: build
   script:
-    - jekyll build -d /var/www/jlog
+    - bundle exec jekyll build -d /var/www/jlog
