@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.7".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
-  s.authors = ["Tobias L\u00FCtke".freeze]
+  s.authors = ["Tobias L\u{fc}tke".freeze]
   s.date = "2018-10-09"
   s.email = ["tobi@leetsoft.com".freeze]
   s.extra_rdoc_files = ["History.md".freeze, "README.md".freeze]
