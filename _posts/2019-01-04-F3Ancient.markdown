@@ -2,8 +2,8 @@
 layout: single
 classes: wide
 # title:
-date:   2019-01-04 10:12:17 +0900
-categories: Test
+# date:   2019-01-04 10:12:17 +0900
+categories: job
 ---
 
 # 고대인 끼리 F3 TEST
@@ -45,3 +45,6 @@ popfilename:  {wildcards.p1}.{wildcards.p2}.Yoruba.list' > {wildcards.p1}.{wildc
 
 
 {% endhighlight %}
+
+<!-- ![이미지](/images/AncientAncientF3HeatMap.png) -->
+
