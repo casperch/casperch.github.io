@@ -7,7 +7,7 @@ categories: job
 
 #F3 Test 수행
 
-convertf 과정에서 샘플 아이디가 길면 아래와 같이 에러가 난다. 39자까지인가?
+convertf 과정에서 샘플 아이디가 길면 아래와 같이 에러가 난다. 45자까지인가?
 
 `
 KPGP-00205-B01-G:KPGP-00205-B01-G ignored
