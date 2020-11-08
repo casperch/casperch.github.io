@@ -9,13 +9,15 @@ cache:
     - vendor/
 
 before_script:
-  - gem install bundler
+  - export GEM_HOME=/home/casperch/gems
+  - gem install bundler  
   - bundle install --path vendor
 
 pages:
   stage: deploy
   script:
     - bundle exec jekyll build -d public
+    
   artifacts:
     paths:
       - public
