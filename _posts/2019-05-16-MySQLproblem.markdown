@@ -12,19 +12,19 @@ Having same issue to get rid of this error i did the following
 
 Stop MYSQL service:
 
-{% highlight %}
+{% highlight bash %}
 sudo service mysql stop
 {% endhighlight %}
 
 Change home directory of mysql from nonexistent to original directory where it is supposed to be:
 
-{% highlight %}
+{% highlight bash %}
 sudo usermod -d /var/lib/mysql/ mysql
 {% endhighlight %}
 
 Now start mysql server again with:
 
-{% highlight %}
+{% highlight bash %}
 sudo service mysql start
 {% endhighlight %}
 The error message has disappeared. Still why this happen is unknown.
