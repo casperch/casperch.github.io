@@ -9,7 +9,7 @@ cache:
     - vendor/
 
 before_script:
-  - export GEM_HOME=/home/casperch/gems
+  - export GEM_HOME=/home/gitlab-runner/gems  
   - gem install bundler  
   - bundle install --path vendor
 
