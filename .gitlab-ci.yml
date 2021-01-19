@@ -1,4 +1,13 @@
-image: ruby:2.7
+image: ruby:latest
+
+variables:
+  JEKYLL_ENV: production
+  LC_ALL: C.UTF-8
+
+stages:
+  - test
+  - build
+  - deploy
 
 workflow:
   rules:
@@ -13,16 +22,24 @@ before_script:
   - gem install bundler  
   - bundle install --path vendor
 
-pages:
-  stage: deploy
+build:
+  stage: build
   script:
     - bundle exec jekyll build -d public
-    
   artifacts:
+    expire_in: 1 hour
     paths:
       - public
   rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "master"'      
+
+deploy-local:
+  stage: deploy
+  script:
+    - rm -rf /var/www/jlog
+    - cp -r public /var/www/jlog
+  only:
+    - master
 
 test:
   stage: test
