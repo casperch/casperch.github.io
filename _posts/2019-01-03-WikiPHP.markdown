@@ -39,4 +39,5 @@ categories: job
     --with-zlib
     #--with-config-file-path=/usr/local/php7.0.33/etc 
     #--with-config-file-scan-dir=/usr/local/php7.0.33/etc/conf.d 
+
 {% endhighlight %}

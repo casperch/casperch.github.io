@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # hidden files
 .*
 !.github
@@ -5,3 +6,9 @@
 # jekyll cache
 _site
 vendor
+=======
+_site
+.sass-cache
+.jekyll-metadata
+.vscode
+>>>>>>> 5acecb80e957b0d2da64ee452bb805de2442fad3

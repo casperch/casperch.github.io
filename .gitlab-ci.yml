@@ -1,0 +1,52 @@
+image: ruby:latest
+
+variables:
+  JEKYLL_ENV: production
+  LC_ALL: C.UTF-8
+
+stages:
+  - test
+  - build
+  - deploy
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - export GEM_HOME=/home/gitlab-runner/gems  
+  - gem install bundler  
+  - bundle install --path vendor
+
+build:
+  stage: build
+  script:
+    - bundle exec jekyll build -d public
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'      
+
+deploy-local:
+  stage: deploy
+  script:
+    - sudo rm -rf /var/www/jlog
+    - sudo cp -r public /var/www/jlog
+  only:
+    - master
+
+test:
+  stage: test
+  script:
+    - bundle exec jekyll build -d test
+  artifacts:
+    paths:
+      - test
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master"'

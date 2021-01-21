@@ -36,3 +36,4 @@ samtools mpileup -q 20 -Q 20 -C 50 -u -r <chr> -f <ref.fa> <bam> | bcftools call
 
 * shapeit2 사용
 
+
