@@ -7,33 +7,35 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: CJP                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: 기억상실증.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  기억상실증에 걸려서..
+  너를 기억해줄께..  
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
-author: your_full_name                  # change to your full name
+author: C.J.P.                  # change to your full name
+
+
+avatar: /assets/img/sample/instax-5892135__340.webp   # support internet resources
 
 github:
-  username: github_username             # change to your github username
+  username: casperch             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username:             # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: C.J.P                  # it will shows as the copyright owner in Footer
+  email: casperch@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    # - https://twitter.com/username      # change to your twitter homepage
+    # - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -47,7 +49,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
@@ -77,6 +79,7 @@ disqus:
 #
 #     dark   - Use the dark color scheme
 #
+
 theme_mode:   # [light|dark]
 
 # The CDN endpoint for images.
@@ -85,9 +88,6 @@ theme_mode:   # [light|dark]
 #
 # e.g. 'https://cdn.com'
 img_cdn: ''
-
-# the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
