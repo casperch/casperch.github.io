@@ -20,7 +20,7 @@ cache:
 before_script:
   - export GEM_HOME=/home/gitlab-runner/gems  
   - gem install bundler  
-  - bundle install --path vendor
+  - bundle install
 
 build:
   stage: build
