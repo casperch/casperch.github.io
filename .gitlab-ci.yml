@@ -18,6 +18,7 @@ cache:
     - vendor/
 
 before_script:
+  - rbenv shell 2.7.2
   - export GEM_HOME=/home/gitlab-runner/gems  
   - gem install bundler  
   - bundle install
