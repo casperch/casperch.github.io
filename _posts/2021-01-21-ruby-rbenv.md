@@ -1,5 +1,6 @@
 ---
-title: ruby rbenv 설치
+title: ruby rbenv install
+tags: [ruby]
 ---
 
 데비안 9에 rbenv 설치하려고 삽질을 하다가 포기하고 있었는데
