@@ -18,6 +18,8 @@ cache:
     - vendor/
 
 before_script:
+  - export PATH="$HOME/.phpenv/bin:$PATH"
+  - eval "$(phpenv init -)"
   - echo $PATH
   - echo $HOME
   - rbenv shell 2.7.2
