@@ -42,6 +42,7 @@ build:
 deploy-local:
   stage: deploy
   script:
+    - id
     - sudo rm -rf /var/www/jlog
     - sudo cp -r public /var/www/jlog
   only:
