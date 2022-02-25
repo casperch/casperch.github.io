@@ -31,7 +31,7 @@ build:
   stage: build
   script:
     # - bundle exec jekyll build -d public
-    - docker run -v `pwd`:/srv/jekyll jekyll/jekyll jekyll build -d public
+    - docker run -v `pwd`:/srv/jekyll jekyll/jekyll jekyll build --trace -d public
   artifacts:
     expire_in: 1 hour
     paths:
