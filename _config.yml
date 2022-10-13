@@ -15,9 +15,9 @@ description: >- # used by seo meta and the atom feed
   너를 기억해줄께..
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://casperch.github.io"
 
-author: C.J.P. # change to your full name
+author: user # change to your full name
 
 avatar: /assets/img/sample/instax-5892135__340.webp # support internet resources
 
