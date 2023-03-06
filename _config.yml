@@ -6,7 +6,7 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: 8bit # the main title
+title: bit # the main title
 
 tagline: 기억상실증. # it will display as the sub-title
 
@@ -28,7 +28,7 @@ twitter:
   username: # change to your twitter username
 
 social:
-  name: C.J.P # it will shows as the copyright owner in Footer
+  name: bit # it will shows as the copyright owner in Footer
   email: casperch@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
